@@ -1,10 +1,10 @@
-FROM node:22-alpine
+FROM node:22.23.4-alpine
 
 WORKDIR /app
 
 # Copy package files first for better layer caching
 COPY package*.json ./
-RUN npm install --production
+RUN npm ci --omit=dev --ignore-scripts
 
 # Copy source
 COPY . .
